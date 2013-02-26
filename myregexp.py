@@ -13,22 +13,21 @@ end of a line (or both).
 $ means end of the line
 '''
 
-def starts_with_apple(test_string):
-    '''Should match all strings starting with apple. Hint, use ^
-    '''
-    return re.search(r'^apple', test_string)
-
 def contains_apple(test_string):
     '''Returns a match iff a string contains apple
     '''
     return re.search(r'apple',test_string)
 
+def starts_with_apple(test_string):
+    '''Should match all strings starting with apple. Hint, use ^
+    '''
+    return None
 
 def ends_with_apple(test_string):
     '''Returns a match iff a string ends with apple. Hint, use $
 
     '''
-    return re.search(r'apple$',test_string) 
+    return None
 
 #Character Class
 '''
@@ -45,13 +44,13 @@ I beat a brat on a boat.  Include the answer below.
 def leet_n00b(test_string):
     '''Should match noob, where the o may be replaced by a 0
     '''
-    return re.search(r'^n[o0][o0]b$',test_string)
+    return None
 
 def leet_password(test_string):
     '''Write a regexp to match password, where the a
     may be replaced by @, the s with $, the o with 0.
     '''
-    return re.search(r'^p[a@][s$][s$]w[o0]rd$',test_string)   
+    return None
 
 #Named character classes, character ranges
 '''
@@ -68,7 +67,7 @@ def valid_telephone(test_string):
     '''Matches phone numbers of the form digit digit digit - digit digit digit digit
     e.g. 285-8133
     '''
-    return re.search('\d\d\d-\d\d\d\d',test_string)
+    return None
 
 def valid_license_plate(test_string):
     '''Matches license plates of the form capital letter capital letter number number number number - number number
@@ -80,7 +79,7 @@ def valid_license_plate(test_string):
     aB1234-12
     AB123412
     '''
-    return re.search('[A-Z][A-Z]\d{4}-\d{2}',test_string)
+    return None
 
 
 #Repetiion
@@ -94,10 +93,10 @@ a{3,} matches three or more occurrences of a
 a{,3} matches up to three occurences of a
 '''
 def mexico_goal(test_string):
-    ''' g, followed by one or more 
+    ''' g, followed by one or more o's, one or more a's, one or more l's.
     Should match goooal goaaaal gooooaaaalll
     '''
-    return re.search(r'go+a+l',test_string)
+    return None
 
 #Now that you know more about character ranges, redo valid_telephone, valid_license_plate 
 #With a cleaner regular expression
@@ -108,7 +107,7 @@ def twitter_page(test_string):
     Note. It should not match pages of the form 'hey/profile/1', or profile/1/more_stuff'
     Hint: use the anchor characters ^, $
     '''
-    return re.search(r'^/profile/(\d+)$', test_string)
+    return None
 
 def valid_email(test_string):
     '''The full details of allowed e-mail addresses is reasonably complicated.  
@@ -126,7 +125,7 @@ def valid_email(test_string):
     'ben@yahoo'
     'ben@yahoo@yahoo.com'
     '''
-    return re.search('^[a-zA-Z][a-zA-Z0-9_]*@[a-zA-Z]+\.[a-zA-Z]+$',test_string) 
+    return None
 
 
 #Grouping
@@ -134,14 +133,11 @@ def valid_email(test_string):
 Suppose you want to match regex of the form
 regex are really really really really awesome!.  Possibly more.
 This can be acheived by grouping 'really ' with parenthesis
-See the example below
 '''
 
 #Example
 def regex_awesome(test_string):
-    return re.search('regular expressions are (really )+awesome!',test_string)
-
-#Try it out
+    return None
 
 
 #Capture Groups.
