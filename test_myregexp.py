@@ -1,6 +1,5 @@
 import unittest
 import ipdb
-import myregexp
 from myregexp import * 
 
 class RegexpAutotester(unittest.TestCase):
@@ -38,6 +37,18 @@ class RegexpAutotester(unittest.TestCase):
 
     def test_profile_pictures_failure(self):
         groups = profile_pictures('/profile/f/picture/10')   
+        self.assertFalse(groups)
+
+    def test_get_cookie_info_success(self):
+        name, value = get_cookie_info("Set-Cookie: LSID=DQAAAK;")
+        self.assertEqual(name,"LSID")
+        self.assertEqual(value,"DQAAAK")
+        name, value = get_cookie_info("Set-Cookie: c_user=19103388;")
+        self.assertEqual(name,"c_user")
+        self.assertEqual(value,"19103388")
+
+    def test_get_cookie_info_failure(self):
+        groups = get_cookie_info("Cookie: LSID=DQAAAK;")
         self.assertFalse(groups)
 
 RegexpAutotester.add_success_test(starts_with_apple, ['apple','apple bottom jeans','apple mac'])

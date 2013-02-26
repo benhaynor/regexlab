@@ -167,7 +167,30 @@ import myregexp
 myregexp.profile_pictures('/profiles/3/pictures/5')
 '''
 
-#Challenge problem
+#CHALLENGE PROBLEM
+def get_cookie_info(test_string):
+    ''' 
+    Used for scraping information from 
+    "Set-Cookie" headers in HTTP responses.
+    
+    Given a string of the form:
+    Set-Cookie: name=value
+    returns a tuple: (name,value).  Can be found as match.groups
+    Example: On the string: "Set-Cookie: LSID=DQAAAK;", returns
+    ("LSID", "DQAAAK")
+
+    On the string: ""Cookie: LSID=DQAAAK;", returns none
+    (only mtaches Set-Cookie.
+    '''
+    #return None
+    match = re.search('',test_string)
+    if match:
+        return match.groups()
+    else:
+        return None
+
+
+#CHALLENGE PROBLEM
 '''
 Write a function that takes a csv file and converts it to a list of lists
 first,last,email
@@ -182,7 +205,7 @@ should become
 ['p','square','chop@mymoney.com']]
 '''
 
-#Extra challenge problem
+#CHALLENGE PROBLEM
 '''Try using search and replace with regular expressions to perform the
 above challenge proplem in your favorite text editor.
 '''
