@@ -156,8 +156,29 @@ below does just that
 def profile_pictures(test_string):
     match = re.search('^/profile/(\d+)/picture/(\d+)$',test_string)
     if match:
-        groups = match.groups()
-        return groups
+        return match.groups()
+    else:
+        return None
+
+#CHALLENGE (OPTIONAL)
+def get_cookie_info(test_string):
+    ''' 
+    Used for scraping information from 
+    "Set-Cookie" headers in HTTP responses.
+    
+    Given a string of the form:
+    Set-Cookie: name=value
+    returns a tuple: (name,value).  Can be found as match.groups
+    Example: On the string: "Set-Cookie: LSID=DQAAAK;", returns
+    ("LSID", "DQAAAK")
+
+    On the string: ""Cookie: LSID=DQAAAK;", returns none
+    (only mtaches Set-Cookie.
+    '''
+    #return None
+    match = re.search('Set-Cookie: ([^=]+)=([^;]+);',test_string)
+    if match:
+        return match.groups()
     else:
         return None
 
