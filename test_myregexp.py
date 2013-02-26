@@ -51,15 +51,10 @@ class RegexpAutotester(unittest.TestCase):
         groups = get_cookie_info("Cookie: LSID=DQAAAK;")
         self.assertFalse(groups)
 
-
-RegexpAutotester.add_success_test(starts_with_apple, ['apple','apple bottom jeans','apple mac'])
-RegexpAutotester.add_failure_test(starts_with_apple,['aapple','bottom apple jeans','mac apple'])
-
-RegexpAutotester.add_success_test(ends_with_apple,['apple','bottom jeans apple','mac apple'])
-RegexpAutotester.add_failure_test(ends_with_apple,['apple hey','bottom apple jeans','apple top'])
-
-RegexpAutotester.add_success_test(contains_apple,['apple','apple bottom jeans','apple mac'])
-RegexpAutotester.add_failure_test(contains_apple,['hey ','bottom  jeans','mac '])
+#Anchors
+RegexpAutotester.add_tests(starts_with_apple, ['apple','apple bottom jeans','apple mac'],['aapple','bottom apple jeans','mac apple'])
+RegexpAutotester.add_tests(ends_with_apple,['apple','bottom jeans apple','mac apple'],['apple hey','bottom apple jeans','apple top'])
+RegexpAutotester.add_tests(contains_apple,['apple','apple bottom jeans','apple mac'],['hey ','bottom  jeans','mac '])
 
 #Character Classes
 RegexpAutotester.add_tests(leet_n00b,['n0ob','no0b','noob','n00b'],['n0b','nob','nob'])
