@@ -70,11 +70,15 @@ RegexpAutotester.add_tests(regex_awesome,['regular expressions are really awesom
 
 if __name__=='__main__':
     loader = unittest.TestLoader()
-    method_name = raw_input('Enter the name of the method your testing or all to test everything\n')
+    matches = [re.search('test_(\w+)_success',method) for method in dir(RegexpAutotester)]
+    non_zero_matches = filter(lambda x: bool(x), matches)
+    filtered_methods = [match.group(1) for match in non_zero_matches]
+    print 'Enter a method from the following list, or "all" to test everything'
+    print "\n".join(filtered_methods)
+    method_name = raw_input()
     if method_name == 'all':
         method_name = ''
     loader.testMethodPrefix = 'test_%s' % method_name
     suite = loader.loadTestsFromTestCase(RegexpAutotester)
-
     unittest.TextTestRunner(verbosity=2).run(suite)
 
