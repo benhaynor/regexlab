@@ -77,11 +77,10 @@ RegexpAutotester.add_tests(regex_awesome,['regular expressions are really awesom
 
 if __name__=='__main__':
     loader = unittest.TestLoader()
-    matches = [re.search('test_(\w+)_success',method) for method in dir(RegexpAutotester)]
-    non_zero_matches = filter(lambda x: bool(x), matches)
-    filtered_methods = [match.group(1) for match in non_zero_matches]
+    tester = re.compile('test_(\w+)_success')
+    matches = [tester.search(method).group(1) for method in dir(RegexpAutotester) if tester.search(method)]
     print 'Enter a method from the following list, or "all" to test everything'
-    print "\n".join(filtered_methods)
+    print "\n".join(matches)
     method_name = raw_input()
     if method_name == 'all':
         method_name = ''
